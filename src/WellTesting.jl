@@ -1,5 +1,13 @@
 module WellTesting
 
-greet() = print("Hello World!")
+using RecipesBase
+using Plots
+
+include("CentralDiff.jl")
+include("BuildUpRecipes.jl")
+include("DrawDownRecipes.jl")
+
+
+
 
 end # module
