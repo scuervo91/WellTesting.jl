@@ -93,6 +93,6 @@ derivativeplot(BuildUp.Time,BuildUp.Pressure)
 ## References
 
 - Ahmed, P. P., & McKinney, P. (2011). Advanced Reservoir Engineering. Elsevier Science.  
--Lee, J. (1982). Well testing.  
--Chapra, S. C., & Canale, R. P. (1988). Numerical methods for engineers. McGraw-Hill  
--Macualo, Freddy Humberto Escobar. Novel, Integrated and Revolutionary Well Test Interpretation and Analysis. IntechOpen, 2019.
+- Lee, J. (1982). Well testing.  
+- Chapra, S. C., & Canale, R. P. (1988). Numerical methods for engineers. McGraw-Hill  
+- Macualo, Freddy Humberto Escobar. Novel, Integrated and Revolutionary Well Test Interpretation and Analysis. IntechOpen, 2019.
