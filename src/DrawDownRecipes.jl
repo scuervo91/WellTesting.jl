@@ -118,6 +118,7 @@
         linecolor := :red
         minorgrid := true
         subplot := 3
+        legend := :bottomright
         label := "Unit slope line"
         [t[1],To],UnitLine
     end
@@ -220,6 +221,7 @@ end
         linestyle := :dash
         linecolor := :red
         minorgrid := true
+        legend := :bottomright
         label := "Unit slope line"
         [t[1],To],UnitLine
     end

@@ -16,7 +16,7 @@
 
        m,b,r=Reg(UnsteadyTime,UnsteadyPressure,TypeReg="Logarithmic")
         UnsteadyLine=map(x->m*log10(x)+b,UnsteadyRange)
-        UnsteadyExtrap=map(x->m*log10(x)+b,[UnsteadyRange[2],1])
+        UnsteadyExtrap=map(x->m*log10(x)+b,[UnsteadyRange[1],1])
        K[[1,2]]=map((q,be,mu)->(162.6*q*be*mu)/(abs(m)*h),Q[[1,2]],β[[1,2]],μ[[1,2]]) #liquis permeability Oil and Water
        K[3]= (162.6*(Q[3]*1000-Q[1]*Rs)*β[3]*μ[3])/(abs(m)*h)
        P1hr=m*log10(H1hr)+b
@@ -47,13 +47,22 @@
     if  UnsteadyRange!=false
        @series begin
            seriestype := :path
-           linestyle := :solid
+           linestyle := :dash
            linecolor := :red
-           linewidth := 2
+           linewidth := 1
            label := "Pi=$(round(Pi,digits=1)) psi"
-           [UnsteadyRange[2],1],  UnsteadyExtrap
+           [UnsteadyRange[1],1],  UnsteadyExtrap
         end
-         pr==true ?  println("Unsteady State Parameters: \n Ko=$(round(K[1],digits=1)) md \n Kw=$(round(K[2],digits=1)) md \n Kg=$(round(K[3],digits=1)) md \n Skin=$(round(S,digits=2)) \n DeltaP Skin=$(round(ΔPs,digits=2)) psi ") : println(" ")
+
+        @series begin
+            seriestype := :path
+            linestyle := :solid
+            linecolor := :red
+            linewidth := 2
+            label := "Unsteady Period"
+            UnsteadyRange,  UnsteadyLine
+         end
+         pr==true ?  println("Unsteady State Parameters: \n Pi=$(round(Pi,digits=1)) psi  \n Ko=$(round(K[1],digits=1))md \n Kw=$(round(K[2],digits=1)) md \n Kg=$(round(K[3],digits=1)) md\n Skin=$(round(S,digits=2)) \n DeltaP Skin=$(round(ΔPs,digits=2)) psi ") : println(" ")
     end
 end
 
@@ -94,7 +103,7 @@ end
         yscale := :log10
         yformatter := :plain
         label := "Derivative Function"
-        ΔTe[2:end-1], Der
+        ΔTe[2:end-1][Der.>0], Der[Der.>0]
     end
 
 end
